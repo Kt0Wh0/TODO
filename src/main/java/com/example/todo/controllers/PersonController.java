@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.todo.service.PersonService;
-import java.util.List;
 
 @RestController
 @RequestMapping("/person")
@@ -16,8 +15,14 @@ public class PersonController {
     private final PersonService personService;
 
     @PostMapping("/register")
-    public Person create(@RequestBody Person person) {
-        return ResponseEntity.ok(personService.register(person)).getBody();
+    public ResponseEntity<String> create(@RequestBody Person person) {
+        //return ResponseEntity.ok(personService.register(person)).getBody();
+        return ResponseEntity.status(HttpStatus.CREATED).body("Пользователь создан");
+    }
+
+    @GetMapping("/login")
+    public ResponseEntity<String> login(@RequestParam String name, @RequestParam int pass) {
+        return ResponseEntity.status(HttpStatus.OK).body("Пользователь существует ы");
     }
 
 

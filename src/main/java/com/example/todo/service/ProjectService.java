@@ -25,7 +25,6 @@ public class ProjectService {
     }
 
     public Project updateProject(long id, Project updateProject) {
-        System.out.println("id" + id);
         Project project = projectRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
 

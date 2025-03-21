@@ -18,26 +18,28 @@ public class ProjectController {
 
     @GetMapping
     public List<Project> getAllProjects() {
-        System.out.println("ПРИИИИВЕЕЕЕТ GET");
         return projectService.getAllProject();
     }
 
     @PostMapping
-    public Project createProject(@RequestBody Project project) {
+    public ResponseEntity<String> createProject(@RequestBody Project project) {
         Project savedProject = projectService.createProject(project);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedProject).getBody();
+        return ResponseEntity.status(HttpStatus.CREATED).body("Проект создан");
     }
 
     @DeleteMapping
-    public void deleteProject(@RequestBody Project project) {
+    public ResponseEntity<String> deleteProject(@RequestBody Project project) {
         projectService.deleteProject(project.getId());
+        return ResponseEntity.status(HttpStatus.OK).body("Проект удален");
     }
 
+    //короче тут я не понял в чем разница, сверху я возвращаю именно ResponseEntity<String>, а снизу просто строку
+    //зачем тогда надо, короче не совсем понял че за прикол
+
     @PutMapping("/{id}")
-    public Project updateProject(@PathVariable long id, @RequestBody Project updateProject) {
-        System.out.println("PUT");
+    public String updateProject(@PathVariable long id, @RequestBody Project updateProject) {
         Project updated = projectService.updateProject(id, updateProject);
-        return ResponseEntity.ok(updated).getBody();
+        return ResponseEntity.status(HttpStatus.OK).body("Проект изменен").getBody();
     }
 
 

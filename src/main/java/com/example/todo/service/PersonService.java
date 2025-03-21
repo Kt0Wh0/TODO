@@ -5,6 +5,8 @@ import com.example.todo.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 
@@ -13,6 +15,9 @@ public class PersonService {
 
     public Person register(Person person) {
         return personRepository.save(person);
+    }
+    public Person login(String name, int pass) {
+        return personRepository.findByNameAndPass(name, pass);
     }
 
 }
