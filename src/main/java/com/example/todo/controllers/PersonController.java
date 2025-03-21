@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 
 public class PersonController {
-    private PersonService personService;
+    private final PersonService personService;
 
     @PostMapping("/register")
     public Person create(@RequestBody Person person) {

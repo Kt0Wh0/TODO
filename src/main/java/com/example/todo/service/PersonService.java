@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 
 public class PersonService {
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
 
     public Person register(Person person) {
         return personRepository.save(person);
