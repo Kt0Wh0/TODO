@@ -1,0 +1,12 @@
+# IntelliJ
+.idea/
+*.iml
+*.ipr
+
+# Сборка
+out/
+target/
+
+# Логи и системные файлы
+*.log
+.DS_Store
