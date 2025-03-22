@@ -32,3 +32,5 @@ public class Person {
         this.id = null; // видишь, ломается
     }
 }
+
+

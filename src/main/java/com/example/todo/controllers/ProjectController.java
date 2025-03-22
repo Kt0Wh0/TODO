@@ -1,5 +1,6 @@
 package com.example.todo.controllers;
 
+import com.example.todo.dto.ProjectDTO;
 import com.example.todo.model.Project;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -41,6 +42,11 @@ public class ProjectController {
     public String updateProject(@PathVariable long id, @RequestBody Project updateProject) {
         Project updated = projectService.updateProject(id, updateProject);
         return ResponseEntity.status(HttpStatus.OK).body("Проект изменен").getBody();
+    }
+
+    @GetMapping("/by-person/{personId}")
+    public List<ProjectDTO> getAllByPersonId(@PathVariable Long personId) {
+        return projectService.findAllByPersonId(personId);
     }
 
 
