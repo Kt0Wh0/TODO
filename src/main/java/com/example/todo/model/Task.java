@@ -1,6 +1,7 @@
 package com.example.todo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Task {
     @Column(name = "description")
     private String description;
     @Column(name = "end_data")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endData;
     @Column(name = "is_resolved")
     private boolean isResolved; // Boolean

@@ -33,16 +33,6 @@ public class Project {
 
     @ManyToOne // где fetchType.LAZY?
     @JoinColumn(name = "person_id", nullable = false)
-    @JsonIgnore // эту хуйню убирай
     private Person person;
 
-    // Зачем тебе это поле? personId достаешь из person.getId()
-    @Transient
-    private Long personId;
-
-    @JsonProperty // эту хуйню убирай
-    public void setPersonId(Long personId) {
-        this.personId = personId;
-        this.person = personId != null ? new Person(personId) : null;
-    }
 }

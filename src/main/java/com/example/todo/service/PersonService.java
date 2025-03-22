@@ -19,6 +19,7 @@ public class PersonService {
     }
     public Person login(String name, int pass) {
         // а что будет если такого юзера нет? Null просто вылетит? Если да, то ок пока что если нет, то напишу в телегу
+
         return personRepository.findByNameAndPass(name, pass);
     }
 
