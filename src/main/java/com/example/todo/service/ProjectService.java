@@ -26,7 +26,9 @@ public class ProjectService {
 
     public Project updateProject(long id, Project updateProject) {
         Project project = projectRepository.findById(id)
+                // вооо, здесь уже обработка хоть какая-то есть, если сущность не будет найдена
                 .orElseThrow(() -> new RuntimeException("Project not found"));
+
 
         project.setName(updateProject.getName());
         project.setDescription(updateProject.getDescription());

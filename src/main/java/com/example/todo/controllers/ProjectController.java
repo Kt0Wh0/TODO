@@ -12,8 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/project")
 @RequiredArgsConstructor
-
+// аналогично
 public class ProjectController {
+    // аналогично
     private final ProjectService projectService;
 
     @GetMapping

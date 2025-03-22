@@ -26,10 +26,10 @@ public class Task {
     @Column(name = "end_data")
     private LocalDate endData;
     @Column(name = "is_resolved")
-    private boolean isResolved;
+    private boolean isResolved; // Boolean
 
 
-    @ManyToOne
+    @ManyToOne // LAZY нужно
     @JoinColumn(name = "project_id", nullable = false)  // Внешний ключ
     private Project project;
 

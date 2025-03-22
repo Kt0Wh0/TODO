@@ -10,8 +10,10 @@ import com.example.todo.service.PersonService;
 @RestController
 @RequestMapping("/person")
 @RequiredArgsConstructor
-
+// зачем пробел здесь?
 public class PersonController {
+
+    // напиши объясни зачем private final пишешь? Это надо делать, но мне надо понять, понимаешь ли ты или нет
     private final PersonService personService;
 
     @PostMapping("/register")
