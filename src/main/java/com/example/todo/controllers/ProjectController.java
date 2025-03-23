@@ -21,18 +21,21 @@ public class ProjectController {
     private final ProjectService projectService;
 
     //все проекты
+    // TODO: DTO вместо Entity
     @GetMapping
     public List<Project> getAllProjects() {
         return projectService.getAllProject();
     }
 
     //все проекты юзера
+    // TODO: DTO вместо Entity
     @GetMapping("/{id}")
     public List<Project> getProjectById(@PathVariable Long id) {
         return projectService.getProjectsByPersonId(id);
     }
 
     //создать проект для юзера
+    // TODO: DTO вместо Entity
     @PostMapping("/{id}")
     public ResponseEntity<Project> createProject(@PathVariable long id, @RequestBody ProjectDTO projectDTO) {
         Project project = projectService.createProject(projectDTO, id);
@@ -50,6 +53,9 @@ public class ProjectController {
     //зачем тогда надо, короче не совсем понял че за прикол
 
     //обновить проект
+    // TODO: ну короче стрингу тоже не принято возвращать. Поэтому лучше сделать объект DTO, назовешь ProjectUpdateStatusDTO
+    // TODO: в котором опишешь одно поле String status. И эту дтошку будешь возвращать. Так лучше, чтобы сервер не тупо строку возвращал, а json
+    // TODO: аналогично ко всем остальным эндпоинтам, где возвращаешь примитивный тип, либо ResponseEntity<> от примитивного типа (см. метод выше)
     @PutMapping("/{id}")
     public String updateProject(@PathVariable long id, @RequestBody Project updateProject) {
         Project updated = projectService.updateProject(id, updateProject);

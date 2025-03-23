@@ -17,9 +17,8 @@ public class PersonService {
     public Person register(Person person) {
         return personRepository.save(person);
     }
-    public Person login(String name, int pass) {
-        // а что будет если такого юзера нет? Null просто вылетит? Если да, то ок пока что если нет, то напишу в телегу
 
+    public Person login(String name, int pass) {
         return personRepository.findByNameAndPass(name, pass);
     }
 

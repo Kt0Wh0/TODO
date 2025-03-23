@@ -16,6 +16,8 @@ public class PersonController {
     private final PersonService personService;
 
     //регистр
+    // TODO: запрещено возвращать и принимать Entity-классы, контроллер работает только с ДТОшками, поэтому
+    // TODO: вместо Person - PersonDTO
     @PostMapping("/register")
     public Person create(@RequestBody Person person) {
         return ResponseEntity.ok(personService.register(person)).getBody();
@@ -23,8 +25,10 @@ public class PersonController {
     }
 
     //логин
+    // TODO: а где реализация? я даже если кину несущесвтующие name и pass, то меня пустит?
     @GetMapping("/login")
     public ResponseEntity<String> login(@RequestParam String name, @RequestParam int pass) {
+        // TODO: вот напиши personService.login(name, pass); чо забыл что ли метод вызвать?
         return ResponseEntity.status(HttpStatus.OK).body("Пользователь существует ы");
     }
 

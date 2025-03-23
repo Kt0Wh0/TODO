@@ -17,6 +17,8 @@ import java.util.List;
 public class TaskController {
     private final TaskService taskService;
 
+    // TODO: все замечания описаны в ProjectController
+
     @PostMapping("/{idProject}")
     public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO, @PathVariable long idProject) {
         Task task = taskService.createTask(taskDTO, idProject);
