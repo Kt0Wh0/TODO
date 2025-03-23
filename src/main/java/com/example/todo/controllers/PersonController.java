@@ -17,9 +17,9 @@ public class PersonController {
 
     //регистр
     @PostMapping("/register")
-    public ResponseEntity<String> create(@RequestBody Person person) {
-        //return ResponseEntity.ok(personService.register(person)).getBody();
-        return ResponseEntity.status(HttpStatus.CREATED).body("Пользователь создан");
+    public Person create(@RequestBody Person person) {
+        return ResponseEntity.ok(personService.register(person)).getBody();
+        //return ResponseEntity.status(HttpStatus.CREATED).body("Пользователь создан");
     }
 
     //логин

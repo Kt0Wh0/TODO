@@ -6,7 +6,9 @@ import com.example.todo.model.Task;
 import com.example.todo.repository.ProjectRepository;
 import com.example.todo.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -33,7 +35,11 @@ public class TaskService {
     public List<Task> getTasksByProject(Long projectId) {
         Project project = projectRepository.findById(projectId)
                 .orElseThrow(() -> new RuntimeException("Project not found"));
-        return taskRepository.findByProject(project);
+        List<Task> tasks = taskRepository.findByProject(project);
+        if (tasks.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return tasks;
     }
 
     public void deleteTask(Long taskId) {

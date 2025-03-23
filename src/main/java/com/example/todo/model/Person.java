@@ -9,6 +9,7 @@ import lombok.Setter;
 @Table (name = "person")
 @Getter
 @Setter
+@SequenceGenerator(name = "id_gen", sequenceName = "person_id_seq", allocationSize = 1)
 public class Person {
     public Person(Long id) {
         this.id = id;
@@ -16,7 +17,7 @@ public class Person {
     public Person() {}
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_gen")
     @Column(name = "id")
     private Long id;
 

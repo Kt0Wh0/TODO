@@ -17,20 +17,20 @@ import java.util.List;
 public class TaskController {
     private final TaskService taskService;
 
-    @PostMapping("/{id}")
-    public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO, @PathVariable long id) {
-        Task task = taskService.createTask(taskDTO, id);
+    @PostMapping("/{idProject}")
+    public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO, @PathVariable long idProject) {
+        Task task = taskService.createTask(taskDTO, idProject);
         return ResponseEntity.status(HttpStatus.CREATED).body(task);
     }
 
-    @GetMapping("/{id}")
-    public List<Task> getTask(@PathVariable long id) {
-        return taskService.getTasksByProject(id);
+    @GetMapping("/{idProject}")
+    public List<Task> getTask(@PathVariable long idProject) {
+        return taskService.getTasksByProject(idProject);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTask(@PathVariable long id) {
-        taskService.deleteTask(id);
+    @DeleteMapping("/{idTask}")
+    public ResponseEntity<String> deleteTask(@PathVariable long idTask) {
+        taskService.deleteTask(idTask);
         return ResponseEntity.status(HttpStatus.OK).body("Task deleted successfully");
     }
 

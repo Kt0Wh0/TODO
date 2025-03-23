@@ -12,11 +12,11 @@ import lombok.Setter;
 @Table(name = "task")
 @Getter
 @Setter
-
+@SequenceGenerator(name = "id_gen", sequenceName = "task_id_seq", allocationSize = 1)
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_gen")
     @Column(name = "id")
     private Long id;
 
