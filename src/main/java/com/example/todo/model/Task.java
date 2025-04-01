@@ -27,8 +27,6 @@ public class Task {
     @Column(name = "end_data")
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate endData;
-    @Column(name = "is_resolved")
-    private boolean isResolved; // Boolean
 
 
     @ManyToOne // LAZY нужно

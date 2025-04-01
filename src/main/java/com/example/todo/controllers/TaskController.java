@@ -1,6 +1,7 @@
 package com.example.todo.controllers;
 
 import com.example.todo.dto.TaskDTO;
+import com.example.todo.dto.TaskIdDTO;
 import com.example.todo.model.Project;
 import com.example.todo.model.Task;
 import com.example.todo.service.TaskService;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -17,17 +19,15 @@ import java.util.List;
 public class TaskController {
     private final TaskService taskService;
 
-    // TODO: все замечания описаны в ProjectController
-
-    @PostMapping("/{idProject}")
-    public ResponseEntity<Task> createTask(@RequestBody TaskDTO taskDTO, @PathVariable long idProject) {
-        Task task = taskService.createTask(taskDTO, idProject);
-        return ResponseEntity.status(HttpStatus.CREATED).body(task);
+    @GetMapping("/{idProject}")
+    public List<TaskIdDTO> getTask(@PathVariable long idProject) {
+        return taskService.getTasksByProject(idProject);
     }
 
-    @GetMapping("/{idProject}")
-    public List<Task> getTask(@PathVariable long idProject) {
-        return taskService.getTasksByProject(idProject);
+    @PostMapping("/{idProject}")
+    public ResponseEntity<TaskDTO> createTask(@RequestBody TaskDTO taskDTO, @PathVariable long idProject) {
+        TaskDTO taskDTO1 = taskService.createTask(taskDTO, idProject);
+        return ResponseEntity.status(HttpStatus.CREATED).body(taskDTO1);
     }
 
     @DeleteMapping("/{idTask}")
@@ -35,5 +35,4 @@ public class TaskController {
         taskService.deleteTask(idTask);
         return ResponseEntity.status(HttpStatus.OK).body("Task deleted successfully");
     }
-
 }

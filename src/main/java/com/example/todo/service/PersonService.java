@@ -1,9 +1,14 @@
 package com.example.todo.service;
 
+import com.example.todo.dto.PersonDTO;
+import com.example.todo.dto.PersonIdDTO;
 import com.example.todo.model.Person;
 import com.example.todo.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -14,12 +19,31 @@ public class PersonService {
     // аналогично. почему private final?
     private final PersonRepository personRepository;
 
-    public Person register(Person person) {
-        return personRepository.save(person);
+    public PersonIdDTO register(PersonDTO personDTO) {
+        Person person = new Person();
+        PersonIdDTO personIdDTO = new PersonIdDTO();
+
+        person.setName(personDTO.getName());
+        person.setPass(personDTO.getPass());
+        personRepository.save(person);
+        personIdDTO.setId(person.getId());
+        personIdDTO.setName(person.getName());
+
+        return personIdDTO;
     }
 
-    public Person login(String name, int pass) {
-        return personRepository.findByNameAndPass(name, pass);
+    public PersonIdDTO login(PersonDTO personDTOLogin) {
+        PersonIdDTO personIdDTO = new PersonIdDTO();
+
+        Person person = personRepository.findByNameAndPass(personDTOLogin.getName(), personDTOLogin.getPass());
+        if (person == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        personIdDTO.setId(person.getId());
+        personIdDTO.setName(person.getName());
+
+        return personIdDTO;
     }
+
 
 }

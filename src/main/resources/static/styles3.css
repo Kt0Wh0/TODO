@@ -1,0 +1,90 @@
+/* Фон страницы */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0072ff, #00c6ff); /* Синий-голубой градиент */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Контейнер формы */
+.login-container {
+    background: white;
+    padding: 25px 40px;
+    border-radius: 10px; /* Закругление контейнера */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 320px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Заголовок */
+.login-container h2 {
+    color: #0044cc;
+    margin-bottom: 15px;
+}
+
+/* Поля ввода */
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #0088ff;
+    border-radius: 10px; /* Закругление полей */
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Эффект фокуса */
+.login-container input:focus {
+    border-color: #0055ff;
+    box-shadow: 0 0 10px rgba(0, 85, 255, 0.3);
+}
+
+/* Кнопки */
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px; /* Закругление кнопок */
+    background: #0088ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Кнопка регистрации */
+.register-btn {
+    background: #00c6ff;
+}
+
+/* Эффект наведения */
+.login-container button:hover {
+    opacity: 0.9;
+    transform: scale(1.03);
+}
+
+/* Сообщение */
+#message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

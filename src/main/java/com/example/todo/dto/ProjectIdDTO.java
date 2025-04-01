@@ -10,10 +10,12 @@ import java.time.LocalDate;
 @Data
 @Getter
 @Setter
-public class TaskDTO {
+public class ProjectIdDTO {
+    private Long id;
     private String name;
     private String description;
-
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate endData;
+    private LocalDate startDate;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate endDate;
 }

@@ -1,6 +1,7 @@
 package com.example.todo.controllers;
 
 import com.example.todo.dto.ProjectDTO;
+import com.example.todo.dto.ProjectIdDTO;
 import com.example.todo.model.Project;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,32 +21,24 @@ public class ProjectController {
     // аналогично
     private final ProjectService projectService;
 
-    //все проекты
-    // TODO: DTO вместо Entity
-    @GetMapping
-    public List<Project> getAllProjects() {
-        return projectService.getAllProject();
-    }
-
     //все проекты юзера
-    // TODO: DTO вместо Entity
     @GetMapping("/{id}")
-    public List<Project> getProjectById(@PathVariable Long id) {
+    public List<ProjectIdDTO> getProjectById(@PathVariable Long id) {
         return projectService.getProjectsByPersonId(id);
     }
 
     //создать проект для юзера
     // TODO: DTO вместо Entity
     @PostMapping("/{id}")
-    public ResponseEntity<Project> createProject(@PathVariable long id, @RequestBody ProjectDTO projectDTO) {
-        Project project = projectService.createProject(projectDTO, id);
-        return ResponseEntity.status(HttpStatus.CREATED).body(project);
+    public ResponseEntity<ProjectDTO> createProject(@PathVariable long id, @RequestBody ProjectDTO projectDTO) {
+        ProjectDTO projectDTO1 = projectService.createProject(projectDTO, id);
+        return ResponseEntity.status(HttpStatus.CREATED).body(projectDTO1);
     }
 
     //удалить проект
-    @DeleteMapping
-    public ResponseEntity<String> deleteProject(@RequestBody Project project) {
-        projectService.deleteProject(project.getId());
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteProject(@PathVariable Long id) {
+        projectService.deleteProject(id);
         return ResponseEntity.status(HttpStatus.OK).body("Проект удален");
     }
 
@@ -53,12 +46,9 @@ public class ProjectController {
     //зачем тогда надо, короче не совсем понял че за прикол
 
     //обновить проект
-    // TODO: ну короче стрингу тоже не принято возвращать. Поэтому лучше сделать объект DTO, назовешь ProjectUpdateStatusDTO
-    // TODO: в котором опишешь одно поле String status. И эту дтошку будешь возвращать. Так лучше, чтобы сервер не тупо строку возвращал, а json
-    // TODO: аналогично ко всем остальным эндпоинтам, где возвращаешь примитивный тип, либо ResponseEntity<> от примитивного типа (см. метод выше)
     @PutMapping("/{id}")
-    public String updateProject(@PathVariable long id, @RequestBody Project updateProject) {
+    public ResponseEntity<String> updateProject(@PathVariable long id, @RequestBody Project updateProject) {
         Project updated = projectService.updateProject(id, updateProject);
-        return ResponseEntity.status(HttpStatus.OK).body("Проект изменен").getBody();
+        return ResponseEntity.status(HttpStatus.OK).body("Проект изменен");
     }
 }

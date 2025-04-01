@@ -10,5 +10,5 @@ import lombok.Setter;
 @Setter
 public class PersonDTO {
     private String name;
-    private int pass;
+    private Integer pass;
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты</title>
+    <link rel="stylesheet" href="stylesproject222.css">
+</head>
+<body>
+<div class="container">
+    <h1>Мои проекты</h1>
+    <button class="addbtn" onclick="openProjectForm()">
+        Добавить проект
+    </button>
+
+    <div id="modal" class="modal" style="display: none">
+        <div class="modal-content">
+            <span class="close" onclick="closeProjectForm()">&times;</span>
+            <h2>Добавить проект</h2>
+            <input type="text" id="name" placeholder="Название проекта">
+            <input type="text" id="description" placeholder="Описание">
+            <input type="date" id="startDate">
+            <input type="date" id="endDate">
+            <button onclick="saveProject()">Сохранить</button>
+        </div>
+    </div>
+
+    <div id="modalUpd" class="modalUpd" style="display: none">
+        <div class="modal-contentUpd">
+            <span class="close" onclick="closeProjectUpdForm()">&times;</span>
+            <h2>Обновить проект</h2>
+            <input type="hidden" id="updateProjectId">
+            <input type="text" id="nameUpd" placeholder="Название проекта">
+            <input type="text" id="descriptionUpd" placeholder="Описание">
+            <input type="date" id="startDateUpd">
+            <input type="date" id="endDateUpd">
+            <button onclick="updateProject()">Обновить</button>
+        </div>
+    </div>
+
+
+    <div id="addTask" class="addTask" style="display: none">
+        <div class="modal-addTask">
+            <span class="close" onclick="closeTaskAdd()">&times;</span>
+            <h2>Добавить задачу</h2>
+            <input type="hidden" id="ProjectId">
+            <input type="text" id="nameTask" placeholder="Название задачи">
+            <input type="text" id="descriptionTask" placeholder="Описание">
+            <input type="date" id="endDateTask">
+            <button onclick="addTask()">Добавить</button>
+        </div>
+    </div>
+
+
+
+
+    <div id="projectList">    </div>
+    <div id="tasksList">      </div>
+
+</div>
+
+<script src="projects.js"></script>
+</body>
+</html>
