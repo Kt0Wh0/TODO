@@ -17,10 +17,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class PersonController {
 
-    // напиши объясни зачем private final пишешь? Это надо делать, но мне надо понять, понимаешь ли ты или нет
     private final PersonService personService;
 
-    //регистр
     @PostMapping("/register")
     public  ResponseEntity<PersonIdDTO> create(@RequestBody PersonDTO personDTO) {
         //ResponseEntity<Map<String, Object>>
@@ -31,7 +29,6 @@ public class PersonController {
         return ResponseEntity.ok(newPerson);
     }
 
-    //логин
     @PostMapping("/login")
     public ResponseEntity<PersonIdDTO> loginPerson(@RequestBody PersonDTO personDTO) {
         //Map<String, Object>

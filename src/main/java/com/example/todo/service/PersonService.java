@@ -16,7 +16,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 
 public class PersonService {
-    // аналогично. почему private final?
     private final PersonRepository personRepository;
 
     public PersonIdDTO register(PersonDTO personDTO) {

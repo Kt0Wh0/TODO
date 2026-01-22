@@ -29,7 +29,7 @@ public class Task {
     private LocalDate endData;
 
 
-    @ManyToOne // LAZY нужно
+    @ManyToOne
     @JoinColumn(name = "project_id", nullable = false)  // Внешний ключ
     private Project project;
 
