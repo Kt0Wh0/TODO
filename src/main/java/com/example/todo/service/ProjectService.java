@@ -24,7 +24,7 @@ public class ProjectService {
 
     public List<ProjectIdDTO> getProjectsByPersonId(Long id) {
         Person person =personRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Person not found"));
+                .orElseThrow(() -> new RuntimeException("Person nott found"));
 
         List<Project> projects = projectRepository.findByPerson(person);
         if (projects.isEmpty()) {
@@ -32,7 +32,6 @@ public class ProjectService {
         }
 
         List<ProjectIdDTO> projectIdDTOS = new ArrayList<>();
-        System.out.println("PRivet SUKA" + projects.size());
 
         for (int i = 0; i < projects.size(); i ++) {
             ProjectIdDTO projectDTO = new ProjectIdDTO();

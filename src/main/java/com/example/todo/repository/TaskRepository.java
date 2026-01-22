@@ -10,6 +10,5 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<Task, Long> {
 
-    // TODO: аналогично. не уверен что будет работать. проверь если ок, то норм
     List<Task> findByProject(Project project);
 }
