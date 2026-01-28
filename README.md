@@ -32,7 +32,6 @@ Backend реализован на **Spring Boot**, frontend находится �
 - Java 23
 - Spring Boot 3.4.3
 - Spring Web
-- Spring Security
 - Spring Data JPA
 - PostgreSQL
 - Maven
