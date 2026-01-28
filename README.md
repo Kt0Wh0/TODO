@@ -53,9 +53,11 @@ Backend реализован на **Spring Boot**, frontend находится �
 Hibernate не создаёт таблицы автоматически.
 Настройки подключения находятся в application.properties
 
+```java
 spring.datasource.url=jdbc:postgresql://localhost:5432/postgres?currentSchema=todo
-spring.datasource.username=postgres
-spring.datasource.password=2102
+spring.datasource.username=your_name
+spring.datasource.password=your_pass
+```
 
 ## Запуск приложения
 Через Maven (рекомендуется для разработки)
